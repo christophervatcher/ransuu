@@ -1,0 +1,30 @@
+sudo: false
+
+language: python
+
+python:
+    - "3.6"
+    - "3.6-dev"
+    - "3.7-dev"
+    - "nightly"
+
+branches:
+    only:
+        - master
+        - /\d+\.\d+\.x/
+        - /\d+\.\d+(\.\d+)?/
+
+matrix:
+    include:
+        - python: "3.6"
+        - python: "3.6-dev"
+        - python: "3.7-dev"
+        - python: "nightly"
+    allow_failures:
+        - python: "3.6-dev"
+        - python: "3.7-dev"
+        - python: "nightly"
+
+install: true
+script: python setup.py test
+
